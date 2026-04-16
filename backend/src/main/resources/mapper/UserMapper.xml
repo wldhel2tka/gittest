@@ -12,6 +12,7 @@
         <result property="company"   column="company"/>
         <result property="phone"     column="phone"/>
         <result property="email"     column="email"/>
+        <result property="userType"  column="user_type"/>
         <result property="createdAt" column="created_at"/>
     </resultMap>
 
@@ -24,8 +25,8 @@
     </select>
 
     <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO users (username, password, name, company, phone, email)
-        VALUES (#{username}, #{password}, #{name}, #{company}, #{phone}, #{email})
+        INSERT INTO users (username, password, name, company, phone, email, user_type)
+        VALUES (#{username}, #{password}, #{name}, #{company}, #{phone}, #{email}, #{userType})
     </insert>
 
 </mapper>

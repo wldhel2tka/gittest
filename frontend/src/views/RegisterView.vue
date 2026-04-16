@@ -104,6 +104,26 @@
             </div>
           </div>
 
+          <!-- 구분 -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">
+              구분 <span class="text-danger">*</span>
+            </label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+              <select
+                v-model="form.userType"
+                class="form-select"
+                :class="{ 'is-invalid': errors.userType }"
+              >
+                <option value="">선택하세요</option>
+                <option value="CUSTOMER">고객사</option>
+                <option value="DEVELOPER">개발사</option>
+              </select>
+              <div class="invalid-feedback">{{ errors.userType }}</div>
+            </div>
+          </div>
+
           <!-- 회사 -->
           <div class="mb-3">
             <label class="form-label fw-semibold">회사</label>
@@ -160,6 +180,7 @@ const form = ref({
   passwordConfirm: '',
   name: '',
   email: '',
+  userType: '',
   company: '',
   phone: ''
 })
@@ -184,6 +205,8 @@ function validate() {
 
   if (!form.value.email) errors.value.email = '이메일을 입력하세요.'
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.value.email)) errors.value.email = '올바른 이메일 형식이 아닙니다.'
+
+  if (!form.value.userType) errors.value.userType = '구분을 선택하세요.'
 
   return Object.keys(errors.value).length === 0
 }

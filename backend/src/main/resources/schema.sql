@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     company     VARCHAR(100) COMMENT '회사',
     phone       VARCHAR(20)  COMMENT '연락처',
     email       VARCHAR(100) NOT NULL UNIQUE COMMENT '이메일',
+    user_type   ENUM('CUSTOMER', 'DEVELOPER') NOT NULL DEFAULT 'CUSTOMER' COMMENT '고객사/개발사',
     created_at  DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='회원';
